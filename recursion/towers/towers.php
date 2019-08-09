@@ -9,5 +9,10 @@
     }
   }
 
-  // towers(4, "A","C","B");
+  // Test
+  $start = microtime(true);
+  echo towers(4, "A","C","B");
+  echo "\n";
+  echo microtime(true)-$start;
+  echo "\n"
  ?>
