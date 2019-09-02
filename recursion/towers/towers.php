@@ -11,7 +11,7 @@
 
   // Test
   $start = microtime(true);
-  echo towers(4, "A","C","B");
+  echo towers(5, "A","C","B");
   echo "\n";
   echo microtime(true)-$start;
   echo "\n"
