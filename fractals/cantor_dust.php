@@ -8,10 +8,8 @@ class CantorDust extends FractalDrawingWindow {
   }
 
   protected function onDraw($context){
-    $height = $this->get_size()[0];
-    $width = $this->get_size()[1];
-    $context->setSourceRgb(0.4, 0.9, 0.4);
-    $this->draw($context,$this->recursionDepth, 0, 0, $height, floatval($width) / $this->recursionDepth);
+    $context->setSourceRgb(0.8118, 0.7137, 0.2275);
+    $this->draw($context,$this->recursionDepth, 0, 0, $this->get_size()[0], floatval($this->get_size()[1]) / $this->recursionDepth);
   }
 
   public function draw($context,$level, $posX, $posY, $sizeX, $sizeY){

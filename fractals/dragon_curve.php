@@ -36,7 +36,7 @@ class DragonCurve extends FractalDrawingWindow {
     $angle = $startAngle;
     $x2 = $x1 + intval(cos($angle)*$side);
     $y2 = $y1 + intval(sin($angle)*$side);
-    $context->setSourceRgb(0.4, 0.4, 0.9);
+    $context->setSourceRgb(0.0, 0.0, 0.0);
     $context->moveTo($x1,$y1);
     $context->lineTo($x2,$y2);
     $context->stroke();
