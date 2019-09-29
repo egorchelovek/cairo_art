@@ -1,5 +1,4 @@
 <?php
-
 // my little happy colorset
 // (huh, you're never watched Bob Ross??)
 const colorset = array(
@@ -13,11 +12,11 @@ const colorset = array(
   'yellow' => array(1.0,1.0,0.0),
 );
 
+// return color rgb array by name
 function get_color($name){
   if(array_key_exists($name, colorset)){
     return colorset[$name];
   }
   return colorset['black'];
 };
-
 ?>

@@ -9,6 +9,9 @@ include 'lsystem_gene.php';
  */
 class LSystem extends FractalDrawingWindow {
 
+  // one
+  public $nameWindow = "L-System fractal: Inslands & lakes";
+
   // two main objects
   private $turtle = NULL;
   private $generator = NULL;
@@ -35,9 +38,12 @@ class LSystem extends FractalDrawingWindow {
 
  // simple return window name
  public function getName() {
-   return "L-System fractal";
+   return $this->nameWindow;
  }
 
+ public function setName($name){
+   $this->nameWindow = $name;
+ }
 
  protected function onDraw($context){
    $width = $this->get_size()[0];
@@ -45,7 +51,7 @@ class LSystem extends FractalDrawingWindow {
 
    $this->turtle = new Turtle();
    $this->turtle->setContext($context);
-   $this->turtle->setposition($width/2, 3*$height/4);
+   $this->turtle->setposition($width/2,1.5*$height/2);
    $this->turtle->pensize($this->width);
    $this->turtle->color($this->color); // standart
 

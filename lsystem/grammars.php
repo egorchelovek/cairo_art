@@ -73,7 +73,7 @@ const grammar = array(
   'island' => array(
     'axiom' => 'F-F-F-F',
     'rules' => array(
-      'F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F',
+      'F'=>'F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F',
     ),
     'angle' => 90.0,
   ),

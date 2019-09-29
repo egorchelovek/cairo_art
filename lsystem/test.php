@@ -3,17 +3,20 @@
 include 'grammars.php';
 include 'lsystem.php';
 
-$grammar = get_grammar('fern');
-$depth = 22;
-$step = 101; // px
+$name = 'island';
+$grammar = get_grammar('islands&lakes');
+$depth =2;
+$step = 5; // px
 
-// $grammar = get_grammar('laminaria');
+// $name = 'yarrow';
+// $grammar = get_grammar($name);
 // $depth = 5;
-// $step = 10;
+// $step = 7;
 
 $width = 1;
-$color = 'green';
+$color = 'blue';
 
-(new LSystem($grammar, $depth, $step, $width, $color))->fullscreen();
+$ls = new LSystem($grammar, $depth, $step, $width, $color);
+$ls->setName($name);
  Gtk::main();
 ?>
