@@ -2,43 +2,75 @@
 
 include 'colors.php';
 
-// make python-like turtle interface
+/*
+Sea ASCII Turtle looks very pretty
+
+                _,.---.---.---.--.._
+            _.-' `--.`---.`---'-. _,`--.._
+           /`--._ .'.     `.     `,`-.`-._\
+          ||   \  `.`---.__`__..-`. ,'`-._/
+     _  ,`\ `-._\   \    `.    `_.-`-._,``-.
+  ,`   `-_ \/ `-.`--.\    _\_.-'\__.-`-.`-._`.
+ (_.o> ,--. `._/'--.-`,--`  \_.-'       \`-._ \
+  `---'    `._ `---._/__,----`           `-. `-\
+            /_, ,  _..-'                    `-._\
+            \_, \/ ._(
+             \_, \/ ._\
+              `._,\/ ._\
+                `._// ./`-._
+                  `-._-_-_.-'
+
+taked from source: http://turtle.ascii.uk/
+*/
+
+// Declare
 interface TurtleInterface {
-  public function forward($distance);
-  public function backward($distance);
-  public function right($angle);
-  public function left($angle);
-  public function setposition($x,$y);
-  public function setheading($angle);
-  public function home();
+  public function forward($distance); // move forward
+  public function backward($distance); // move backward
+  public function right($angle); // turn right
+  public function left($angle); // turn left
+  public function setposition($x,$y); // set turtle postion
+  public function setheading($angle); // set turtle orientation angle
+  public function home(); // return turle to home (0,0)
 
-  public function penup();
-  public function pendown();
-  public function pensize($width);
-  public function color($name);
+  public function penup(); // after that turtle moves don't track on canvas
+  public function pendown(); // after that turtle moves StarTrack on canvas
+  public function pensize($width); // set turtle drawing size
+  public function color($name); // set turtle drawing color
 
-  public function position();
-  public function heading();
+  public function position(); // get turtle follow position
+  public function heading(); // get turtle follow orientation
 
-  // unusual fun
-  public function setcolor($rgb);
-  public function getpensize();
-  public function getcolor();
+  // unusual fun (absent in python turtle common lib)
+  public function setcolor($rgb); // set color by rgb values
+  public function getpensize(); // get turtle follow drawing size
+  public function getcolor(); // get turtle follow drawing color
 }
 
+// Simple Cairo-context wrapping class
 class Turtle implements TurtleInterface {
-  private $context = NULL;
-  private $angle = 3.14;
-  private $x = 0;
-  private $y = 0;
-  private $size = 0;
-  private $c = NULL;
 
-  // main drawing functions
+  private $context = NULL; // our Cairo-context for drawing
+  private $angle = M_PI; // follow angle
+  private $x = 0; // follow x-coordinate
+  private $y = 0; // follow  y-coordinate
+  private $size = 0; // drawing line width
+  private $c = NULL; // drawing color
+
+  // init function (doesn't work without it)
+  public function setContext($context){
+    $this->context = $context;
+  }
+
+  /*
+   *  Main drawing functions
+   */
+  // turn turtle by degree in radians
   private function turnRightLeft($angle){
     $this->angle += $angle;
   }
 
+  // turtle forward, turtle backward
   private function moveForwardBackward($distance){
     $this->x += $distance * sin($this->angle);
     $this->y += $distance * cos($this->angle);
@@ -48,6 +80,7 @@ class Turtle implements TurtleInterface {
     $this->context->moveTo($this->x,$this->y);
   }
 
+  // turtle up, turtle down
   private function moveUpDown($direction){
     if ($direction == 'Up') {
       $this->context->setLineWidth(0);
@@ -56,6 +89,7 @@ class Turtle implements TurtleInterface {
     }
   }
 
+  // place turtle to position
   private function moveToPostion($x, $y){
     $this->x = $x;
     $this->y = $y;
@@ -63,18 +97,16 @@ class Turtle implements TurtleInterface {
     $this->context->moveTo($this->x, $this->y);
   }
 
+  // set drawing line width
   private function setSize($width){
     $this->size = $width;
 
     $this->context->setLineWidth($this->size);
   }
 
-  // init function (doesn't work without it)
-  public function setContext($context){
-    $this->context = $context;
-  }
-
-  // interface functions links
+  /*
+   * Interface functions links (look up interace to understanding)
+   */
   public function forward($distance){
     $this->moveForwardBackward($distance);
   }
@@ -129,3 +161,4 @@ class Turtle implements TurtleInterface {
     return $this->c;
   }
 }
+?>

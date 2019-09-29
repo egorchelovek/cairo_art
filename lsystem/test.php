@@ -1,6 +1,6 @@
 
 <?php
-include 'grammar.php';
+include 'grammars.php';
 include 'lsystem.php';
 
 $grammar = get_grammar('fern');

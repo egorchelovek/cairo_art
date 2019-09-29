@@ -1,5 +1,7 @@
 <?php
 
+// my little happy colorset
+// (huh, you're never watched Bob Ross??)
 const colorset = array(
   'black' => array(0.0,0.0,0.0),
   'white' => array(1.0,1.0,1.0),
