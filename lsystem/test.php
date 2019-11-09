@@ -4,7 +4,7 @@ include 'grammars.php';
 include 'lsystem.php';
 
 $name = 'island';
-$grammar = get_grammar('dragon');
+$grammar = get_grammar('islands&lakes');
 $depth =2;
 $step = 5; // px
 
