@@ -10,8 +10,12 @@ class PythagorianTree extends FractalDrawingWindow {
   protected function onDraw($context){
     $width = $this->get_size()[0];
     $height = $this->get_size()[1];
-    // $context->setSourceRgb(0.4, 0.9, 0.4);
+
+    $context->setSourceRgba(1.0,1.0,1.0,1.0);
+    $context->rectangle(0,0,$width,$height);
+    $context->fill();
     $this->draw($context, $this->recursionDepth, $width/2 - 50, $height, $width/2 +50, $height);
+
   }
   public function draw($context, $depth, $x1, $y1, $x2, $y2){
     if($depth == 0) {

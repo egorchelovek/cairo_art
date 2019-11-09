@@ -14,7 +14,7 @@ abstract class FractalDrawingWindow extends GtkWindow {
     $drawingArea->connect('expose_event',array($this,'onExpose'));
     $this->add($drawingArea);
 
-    $this->set_default_size(640,480);
+    $this->set_default_size(240,320);
     $this->set_position(GTK::WIN_POS_CENTER);
 
     $this->show_all();

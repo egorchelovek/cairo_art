@@ -14,7 +14,7 @@ function F($n){
 
 // Test
 $start = microtime(true);
-echo F(100);
+echo F(30);
 echo "\n";
 echo microtime(true)-$start;
 echo "\n";
